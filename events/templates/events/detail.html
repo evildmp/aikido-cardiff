@@ -1,0 +1,17 @@
+{% extends 'events/base.html' %}
+
+{% load cms_tags thumbnail %}
+
+{% block title %}{{ request.site.name }} - {{ event.title }}{% endblock title %}
+
+{% block h1 %}{{ event.title }}{% endblock %}
+
+{% block content %}
+
+  <p>{% include 'events/includes/dates.html' %}</p>
+
+  <p><span class="event-summary">{{ event.summary }}</span><p>
+
+  {% render_placeholder event.body "640" %}
+
+{% endblock %}

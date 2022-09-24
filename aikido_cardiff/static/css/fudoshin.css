@@ -1,0 +1,131 @@
+/*
+  orange: #f95011;
+  cream: #f6f6e9;
+*/
+
+body	{
+	margin: 0;
+	background: #f95011;
+	color: black;
+	font-family: "gill sans", "gill sans mt", "Trebuchet MS", sans-serif ;
+  font-size: 110%;
+	}
+
+/* ----------- core HTML elements -----------*/
+
+h1	{
+	font-size: 180%;
+	padding: 1ex 0 3ex;
+    margin: 0;
+	font-family: Baskerville, Garamond, Palatino, "Palatino Linotype", "Century Schoolbook L", serif;
+	font-weight: normal;
+	font-variant: small-caps;
+	letter-spacing: .05em;
+  }
+
+h1:first-letter	{color: #f95011;}
+
+h2, h3 {font-family: "gill sans", "gill sans mt", "Trebuchet MS", sans-serif;}
+
+h2	{
+	font-size: 120%;
+	padding: 4ex 0 .5ex; margin: 0;
+	font-weight: bold;
+	letter-spacing: .05em;
+}
+
+h3	{
+	font-size: 130%;
+	padding: 2ex 0 .5ex; margin: 0;
+	font-weight: 100;
+}
+
+h4 {padding: .7ex 0 0; margin: 0; }
+
+p {margin: 2ex 0; line-height: 1.7;}
+
+footer {margin-top: 2em;}
+
+a:link, a:visited	{col or: #f95011 ;}
+a:link:hover, a:visited:hover	{color: gray; text-decoration-color: #f95011;}
+
+/* ------------ layout styling ------------- */
+
+div.container {
+  background: url('/static/img/dojo-576.jpg') #f6f6e9 no-repeat 50% 0;
+	padding: 350px 40px 10px;
+  margin-top: 0px; margin-bottom: 40px;
+}
+
+@media (min-width: 768px) {
+  div.container {
+    padding-top: 360px;
+    background-image: url('/static/img/dojo-768.jpg');
+  }
+}
+
+@media (min-width: 992px) {
+  div.container {
+    padding-top: 400px;
+    background-image: url('/static/img/dojo-960.jpg');
+  }
+}
+
+@media (min-width: 1140px) {
+  div.container {
+    padding-top: 400px;
+    background-image: url('/static/img/dojo-1140.jpg');
+  }
+}
+*/
+
+
+/* ------------ menu ------------- */
+
+nav#menu li	{
+    margin: 0;
+    padding: 0;
+    font-family: Baskerville, "gill sans", "gill sans mt", "Trebuchet MS", sans-serif;
+    font-weight: normal;
+    font-variant: small-caps;
+    font-size: 120%;
+}
+
+nav#menu li a {
+    text-decoration: none;
+    color: gray;
+  }
+
+nav#menu li a:hover	{
+    color: #f95011;
+}
+
+
+big {
+    color: #f95011;
+    font-weight: lighter; font-size: 160%; margin: 3ex 0;
+}
+
+/* ------------ cards ------------- */
+
+
+div.card-body {background: white;}
+div.card.bg-primary {background: #f95011 !important;}
+div.card.bg-primary .card-header {color: white;}
+
+div.card h2,
+div.card h3,
+div.card h4 {
+  padding: 0;
+}
+
+.jumbotron {background-color: white;}
+
+
+/* ------------ events ------------- */
+
+ul.events {list-style: none; padding-left: 0;}
+ul.events li {padding-bottom: .5em;}
+a.event-title {font-weight: bold;}
+span.event-summary {color: gray;}
+span.event-dates {color: black; font-style: italic;}

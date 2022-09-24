@@ -1,0 +1,87 @@
+{% load staticfiles i18n cms_tags menu_tags sekizai_tags %}
+
+<!doctype html>
+
+<html lang="{{ LANGUAGE_CODE }}">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="{% page_attribute 'meta_description' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="apple-touch-icon" href="{% static 'apple-touch-icon.png' %}">
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'css/fudoshin.css' %}" rel="stylesheet">
+
+    <title>{% block title %}{{ request.site.name }} - {% page_attribute menu_title %}{% endblock title %}</title>
+
+    {% render_block "css" %}
+    {{ ALDRYN_SNAKE.render_head }}
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-4662872-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-4662872-1');
+    </script>
+
+  </head>
+
+  <body>
+
+    {% cms_toolbar %}
+
+    <!--[if lt IE 8]>
+    {% blocktrans %}
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    {% endblocktrans %}
+    <![endif]-->
+
+    <div class="container">
+
+      <!-- Navigation -->
+      <nav class="navbar navbar-expand-md navbar-light" id="menu">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+          >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">{% show_menu 0 0 100 100 %}</ul>
+        </div>
+      </nav>
+
+
+      <h1>{% block h1 %}{% page_attribute page_title %}{% endblock %}</h1>
+
+      {% block content %}
+        <p>Hello world! This is the HTML5 Boilerplate.</p>
+      {% endblock %}
+
+      <footer>{% static_placeholder "footer" %}</footer>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+
+    {% render_block "js" %}
+    {{ ALDRYN_SNAKE.render_tail }}
+  </body>
+</html>
