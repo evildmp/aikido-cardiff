@@ -1,4 +1,4 @@
-{% load staticfiles i18n cms_tags menu_tags sekizai_tags %}
+{% load static i18n cms_tags menu_tags sekizai_tags %}
 
 <!doctype html>
 
@@ -11,8 +11,7 @@
     <meta name="description" content="{% page_attribute 'meta_description' %}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="apple-touch-icon" href="{% static 'apple-touch-icon.png' %}">
-    <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
+    <link rel="icon" href="{% static 'favicon.png' %}">
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="{% static 'css/fudoshin.css' %}" rel="stylesheet">
