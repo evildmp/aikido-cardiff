@@ -1,5 +1,5 @@
 """
-WSGI config for quickstart project.
+WSGI config for Aikido Cardiff project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
