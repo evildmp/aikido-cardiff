@@ -3,8 +3,11 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+import aikido_cardiff.views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path("favicon.ico", aikido_cardiff.views.favicon),
 ]
 
 if settings.DEBUG:
