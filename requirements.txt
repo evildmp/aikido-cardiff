@@ -4,7 +4,8 @@ django-storage-url==0.5.0
 whitenoise==5.2.0
 boto3==1.14.49
 psycopg2==2.8.5
-GUNICORN==20.1.0
+uwsgi==2.0.20
+#GUNICORN==20.1.0
 
 django-cms==3.11.0
 djangocms-text-ckeditor

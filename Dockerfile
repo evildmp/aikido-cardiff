@@ -9,4 +9,5 @@ COPY . /app
 
 RUN python manage.py collectstatic --noinput
 
-CMD gunicorn --bind=0.0.0.0:80 --forwarded-allow-ips="*" aikido_cardiff.wsgi
+CMD uwsgi --module=aikido_cardiff.wsgi --http=0.0.0.0:80
+# CMD gunicorn --bind=0.0.0.0:80 --forwarded-allow-ips="*" aikido_cardiff.wsgi
