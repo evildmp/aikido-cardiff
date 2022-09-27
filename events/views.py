@@ -1,3 +1,4 @@
+import datetime
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
@@ -5,24 +6,19 @@ from django.views import generic
 
 from .models import Event
 
+from django.http import HttpResponse
+from django.views import View
 
-class IndexView(generic.ListView):
+class EventsView(View):
     template_name = 'events/base.html'
-    context_object_name = 'latest_event_list'
 
-    def get_queryset(self):
-        """Return the last five published events."""
-        return Event.objects.filter(published=True).order_by('start_date')[:5]
-
-
-class PreviousIndexView(generic.ListView):
-    template_name = 'events/base.html'
-    context_object_name = 'latest_event_list'
-
-    def get_queryset(self):
-        """Return the last five published events."""
-        return Event.objects.filter(published=True).order_by('start_date')
-
+    def get(self, request):
+        current_events = Event.objects.filter(published=True, end_date__gt=datetime.datetime.now()).order_by('start_date')
+        previous_events = Event.objects.filter(published=True, end_date__lt=datetime.datetime.now()).order_by('start_date').reverse()
+        return render(request, 'events/base.html', {
+            'current_events': current_events,
+            'previous_events': previous_events,
+        })
 
 class DetailView(generic.DetailView):
     model = Event

@@ -4,4 +4,42 @@
 
 {% block title %}{{ request.site.name }} - Events{% endblock title %}
 
-{% block content %}{% static_placeholder 'body' %}{% endblock %}
+{% block content %}
+    {% static_placeholder 'body' %}
+
+    <h2>Current events</h2>
+
+    <ul class="row events">
+        {% for event in current_events %}
+          <li class="col col-12 col-lg-6">
+            <a href="{% url 'events:detail' event.slug %}" class="event-title">{{ event.title }}</a><br>
+            {% include 'events/includes/dates.html' %}<br>
+            <span class="event-summary">{{ event.summary }}</span>
+          </li>
+        {% endfor %}
+    </ul>
+
+    <h2>Previous events</h2>
+
+    <ul class="row events">
+        {% regroup previous_events by end_date.year as years %}
+            {% for year in years %}
+                <li class="col col-12">
+                    <strong>{{ year.grouper }}</strong>
+                    <ul class="row events">
+                        {% for event in year.list %}
+                            <li class="col col-12 col-lg-6">
+                                {% if event.body.cmsplugin_set.all %}
+                                    <a href="{% url 'events:detail' event.slug %}" class="event-title">{{ event.title }}</a><br>
+                                {% else %}
+                                    {{ event.title }}<br>
+                                {% endif %}
+                                {% include 'events/includes/dates.html' %}<br>
+                                <span class="event-summary">{{ event.summary }}</span>
+                            </li>
+                        {% endfor %}
+                    </ul>
+            {% endfor %}
+    </ul>
+
+      {% endblock %} 
