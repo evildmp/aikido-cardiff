@@ -7,18 +7,21 @@
 {% block content %}
     {% static_placeholder 'body' %}
 
-    <h2>Current events</h2>
+    {% if current_events %}
+        <h2>Current events</h2>
 
-    <ul class="row events">
-        {% for event in current_events %}
-          <li class="col col-12 col-lg-6">
-            <a href="{% url 'events:detail' event.slug %}" class="event-title">{{ event.title }}</a><br>
-            {% include 'events/includes/dates.html' %}<br>
-            <span class="event-summary">{{ event.summary }}</span>
-          </li>
-        {% endfor %}
-    </ul>
-
+        <ul class="row events">
+            {% for event in current_events %}
+            <li class="col col-12 col-lg-6">
+                <a href="{% url 'events:detail' event.slug %}" class="event-title">{{ event.title }}</a><br>
+                {% include 'events/includes/dates.html' %}<br>
+                <span class="event-summary">{{ event.summary }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+        <hr>
+    {% endif %}
+    
     <h2>Previous events</h2>
 
     <ul class="row events">
